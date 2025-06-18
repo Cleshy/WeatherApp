@@ -1,9 +1,9 @@
-import { useState } from "react";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
     <>
-      <h1>Initial commit.</h1>
+      <SearchBar />
     </>
   );
 }

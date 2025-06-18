@@ -1,0 +1,17 @@
+@layer components {
+  .search-container {
+    @apply relative flex;
+  }
+
+  .search-icon {
+    @apply w-[2.4rem] h-[2.4rem] absolute left-[8px] top-[8px] text-inherit;
+  }
+
+  .search {
+    @apply rounded-[76px] p-[0.8rem] pl-[44px] bg-[var(--color-bg-dark)] text-inherit;
+  }
+
+  .search:focus {
+    @apply outline-none;
+  }
+}
