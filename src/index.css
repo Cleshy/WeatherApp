@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@layer compoents {
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(to right bottom, magenta, cyan);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+
+  h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 1);
+  }
+}
