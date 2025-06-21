@@ -4,7 +4,7 @@
   }
 
   .temp {
-    @apply h-[32px] w-[32px] rounded-full text-[16px] font-bold cursor-pointer;
+    @apply h-8 w-8 rounded-full font-bold cursor-pointer;
   }
 
   .active {

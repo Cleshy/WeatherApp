@@ -1,14 +1,14 @@
 @layer components {
   .search-container {
-    @apply relative flex;
+    @apply flex items-center gap-3 bg-bg-dark p-2 rounded-full h-11;
   }
 
   .search-icon {
-    @apply w-[2.4rem] h-[2.4rem] absolute left-[8px] top-[8px] text-inherit;
+    @apply w-6 h-6;
   }
 
   .search {
-    @apply rounded-[76px] p-[0.8rem] pl-[44px] bg-[var(--color-bg-dark)] text-inherit;
+    @apply rounded-full text-sm leading-11;
   }
 
   .search:focus {

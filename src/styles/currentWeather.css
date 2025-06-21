@@ -1,0 +1,46 @@
+@layer components {
+  .current-weather {
+    @apply bg-bg-dark rounded-3xl px-5 py-6 flex justify-between text-[12px];
+  }
+
+  .current-weather__main,
+  .current-weather__meta {
+    @apply flex flex-col gap-3;
+  }
+
+  .current-weather__meta {
+    @apply justify-between text-right font-medium;
+  }
+
+  .current-weather__temp {
+    @apply text-[64px] font-semibold leading-15;
+  }
+
+  .current-weather__status {
+    @apply flex items-center gap-3 text-[12px];
+  }
+
+  .current-weather__icon {
+    @apply h-9 w-9;
+  }
+
+  .current-weather__location {
+    @apply text-2xl;
+  }
+
+  .current-weather__wind {
+    @apply flex items-center gap-3 mt-5;
+  }
+
+  .current-weather__wind-icon {
+    @apply h-5 w-5;
+  }
+
+  .current-weather__wind-speed {
+    @apply text-base;
+  }
+
+  .current-weather__range {
+    @apply font-normal;
+  }
+}

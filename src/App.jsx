@@ -3,10 +3,10 @@ import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Navigation />
       <Dashboard />
-    </>
+    </div>
   );
 }
 

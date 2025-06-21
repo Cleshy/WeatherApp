@@ -1,2 +1,5 @@
 @layer components {
+  .dashboard {
+    @apply mt-9;
+  }
 }

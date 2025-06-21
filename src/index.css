@@ -23,21 +23,19 @@
     box-sizing: border-box;
   }
 
-  html {
-    font-size: 62.5%;
-  }
-
   body {
     background: url("/bg.png");
     background-color: #030616;
     height: 100vh;
-    padding: 2.8rem 2.4rem;
     color: #f2f5f9;
-    font-size: 1.4rem;
     font-family: "Outfit", sans-serif;
   }
 }
 
+@import "./styles/app.css";
 @import "./styles/navigation.css";
 @import "./styles/searchBar.css";
 @import "./styles/temperatureUnits.css";
+
+@import "./styles/dashboard.css";
+@import "./styles/currentWeather.css";
