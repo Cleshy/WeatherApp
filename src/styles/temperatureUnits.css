@@ -1,0 +1,13 @@
+@layer components {
+  .temp-container {
+    @apply flex items-center bg-bg-dark rounded-full p-1;
+  }
+
+  .temp {
+    @apply h-[32px] w-[32px] rounded-full text-[16px] font-bold cursor-pointer;
+  }
+
+  .active {
+    @apply bg-bg-light text-text-light;
+  }
+}

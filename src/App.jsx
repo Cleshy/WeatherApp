@@ -1,9 +1,11 @@
-import SearchBar from "./components/SearchBar";
+import Navigation from "./components/Navigation";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
     <>
-      <SearchBar />
+      <Navigation />
+      <Dashboard />
     </>
   );
 }
