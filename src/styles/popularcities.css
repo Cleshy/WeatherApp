@@ -1,0 +1,42 @@
+@layer components {
+  .popular-cities {
+    @apply mt-11;
+  }
+
+  .popular-cities__title {
+    @apply font-medium text-[20px];
+  }
+
+  .popular-cities-card-container {
+    @apply mt-5 flex flex-col gap-6;
+  }
+
+  .city-weather-card {
+    @apply bg-bg-dark rounded-2xl p-5 flex justify-between;
+  }
+
+  .city-weather-card__main,
+  .city-weather-card__meta {
+    @apply flex flex-col;
+  }
+
+  .city-weather-card__meta {
+    @apply text-right gap-3;
+  }
+
+  .city-weather-card__country {
+    @apply text-sm;
+  }
+  .city-weather-card__city {
+    @apply text-2xl;
+  }
+  .city-weather-card__condition {
+    @apply text-[12px] mt-auto;
+  }
+  .city-weather-card__icon {
+    @apply h-9 w-9;
+  }
+  .city-weather-card__temp {
+    @apply text-2xl;
+  }
+}

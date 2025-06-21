@@ -1,6 +1,7 @@
 import CurrentWeather from "./CurrentWeather";
 import HourlyForecast from "./HourlyForecast";
 import DayForecast from "./DayForecast";
+import PopularCities from "./PopularCities";
 
 function Dashboard() {
   return (
@@ -8,6 +9,7 @@ function Dashboard() {
       <CurrentWeather />
       <HourlyForecast />
       <DayForecast />
+      <PopularCities />
     </section>
   );
 }
