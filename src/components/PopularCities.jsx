@@ -8,8 +8,6 @@ function PopularCities() {
         <CityWeatherCard />
         <CityWeatherCard />
         <CityWeatherCard />
-        <CityWeatherCard />
-        <CityWeatherCard />
       </div>
     </section>
   );

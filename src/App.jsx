@@ -1,11 +1,14 @@
 import Navigation from "./components/Navigation";
 import Dashboard from "./components/Dashboard";
+import WeatherProvider from "./context/WeatherContext";
 
 function App() {
   return (
     <div className="app">
-      <Navigation />
-      <Dashboard />
+      <WeatherProvider>
+        <Navigation />
+        <Dashboard />
+      </WeatherProvider>
     </div>
   );
 }

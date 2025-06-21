@@ -30,6 +30,6 @@
     @apply text-base;
   }
   .day-forecast__temp-bar {
-    @apply h-[6px] bg-divider w-[130px] rounded-full;
+    @apply h-[6px] bg-divider w-[70px] rounded-full;
   }
 }

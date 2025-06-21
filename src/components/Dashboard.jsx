@@ -5,12 +5,12 @@ import PopularCities from "./PopularCities";
 
 function Dashboard() {
   return (
-    <section className="dashboard">
+    <main className="dashboard">
       <CurrentWeather />
       <HourlyForecast />
       <DayForecast />
       <PopularCities />
-    </section>
+    </main>
   );
 }
 

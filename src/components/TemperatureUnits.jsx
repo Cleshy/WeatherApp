@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { WeatherContext } from "../context/WeatherContext";
 
 function TemperatureUnits() {
-  const [activeUnit, setActiveUnit] = useState("C");
+  const { unit, setUnit } = useContext(WeatherContext);
 
   return (
     <div className="temp-container">
       <button
-        onClick={() => setActiveUnit("C")}
-        className={`temp ${activeUnit === "C" ? "active" : ""}`}
+        onClick={() => setUnit("metric")}
+        className={`temp ${unit === "metric" ? "active" : ""}`}
       >
         °C
       </button>
       <button
-        onClick={() => setActiveUnit("F")}
-        className={`temp ${activeUnit === "F" ? "active" : ""}`}
+        onClick={() => setUnit("imperial")}
+        className={`temp ${unit === "imperial" ? "active" : ""}`}
       >
         °F
       </button>
