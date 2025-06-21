@@ -5,6 +5,7 @@
   --color-bg-light: #f2f5f9;
   --color-text-light: #030616;
   --color-text-dark: #f2f5f9;
+  --color-divider: #030616;
 }
 
 :root {
@@ -12,6 +13,7 @@
   --bg-light: var(--color-bg-light);
   --text-light: var(--color-text-light);
   --text-dark: var(--color-text-dark);
+  --divider: var(--color-divider);
 }
 
 @layer base {
@@ -39,3 +41,5 @@
 
 @import "./styles/dashboard.css";
 @import "./styles/currentWeather.css";
+@import "./styles/hourlyforecast.css";
+@import "./styles/dayforecast.css";

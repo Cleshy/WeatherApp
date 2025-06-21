@@ -1,2 +1,30 @@
 @layer components {
+  .hourly-forecast {
+    @apply mt-11 px-[46px] grid grid-cols-3 gap-4;
+  }
+
+  /* Forecast card */
+  .hourly-forecast__card {
+    @apply bg-bg-dark rounded-2xl text-center max-w-20 py-4 px-2;
+  }
+
+  .hourly-forecast__time {
+    @apply font-medium text-[12px];
+  }
+  .hourly-forecast__divider {
+    @apply h-[1px] bg-divider mt-3 mb-4;
+  }
+
+  .hourly-forecast__status {
+    @apply flex flex-col gap-1 items-center mb-5;
+  }
+  .hourly-forecast__icon {
+    @apply h-9 w-9;
+  }
+  .hourly-forecast__condition {
+    @apply text-[10px];
+  }
+  .hourly-forecast__temp {
+    @apply font-semibold text-[32px];
+  }
 }

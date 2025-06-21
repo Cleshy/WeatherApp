@@ -1,0 +1,7 @@
+@layer components {
+  .day-forecast {
+    @apply mt-12;
+  }
+  .day-forecast-card {
+  }
+}

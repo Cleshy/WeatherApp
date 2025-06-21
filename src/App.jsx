@@ -3,7 +3,7 @@ import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
-    <div className="app">
+    <div>
       <Navigation />
       <Dashboard />
     </div>

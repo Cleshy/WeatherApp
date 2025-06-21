@@ -1,7 +1,16 @@
+import HourlyForecastCard from "./HourlyForecastCard";
+
 function HourlyForecast() {
   return (
-    <section>
-      <h2></h2>
+    <section className="hourly-forecast">
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
+      <HourlyForecastCard />
     </section>
   );
 }
