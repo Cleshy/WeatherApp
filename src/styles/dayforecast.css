@@ -2,6 +2,34 @@
   .day-forecast {
     @apply mt-12;
   }
+
+  .day-forecast__title {
+    @apply text-xl font-medium;
+  }
+
+  .day-forecast-card-container {
+    @apply mt-5 flex flex-col gap-3;
+  }
+
   .day-forecast-card {
+    @apply bg-bg-dark rounded-2xl px-4 py-3 flex justify-between items-center font-medium;
+  }
+
+  .day-forecast__day {
+    @apply text-[20px];
+  }
+
+  .day-forecast__icon {
+    @apply h-9 w-9;
+  }
+
+  .day-forecast__temp {
+    @apply flex items-center gap-3;
+  }
+  .day-forecast__temp-text {
+    @apply text-base;
+  }
+  .day-forecast__temp-bar {
+    @apply h-[6px] bg-divider w-[130px] rounded-full;
   }
 }
