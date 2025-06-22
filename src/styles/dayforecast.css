@@ -1,6 +1,6 @@
 @layer components {
   .day-forecast {
-    @apply mt-12;
+    @apply mt-12 lg:mt-0 lg:col-start-2 lg:col-end-3 lg:row-start-2 lg:row-end-3;
   }
 
   .day-forecast__title {
@@ -19,8 +19,20 @@
     @apply text-[20px];
   }
 
+  .day-forecast__visuals {
+    @apply flex items-center gap-3;
+  }
+
+  .day-forecast__text {
+    @apply hidden lg:block text-[10px];
+  }
+
   .day-forecast__icon {
     @apply h-9 w-9;
+  }
+
+  .day-forecast__temp-condition {
+    @apply flex items-center gap-3;
   }
 
   .day-forecast__temp {
@@ -30,6 +42,6 @@
     @apply text-base;
   }
   .day-forecast__temp-bar {
-    @apply h-[6px] bg-divider w-[70px] rounded-full;
+    @apply h-[6px] bg-divider w-[70px] lg:w-[215px] xl:w-[540px] rounded-full;
   }
 }

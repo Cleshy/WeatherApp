@@ -1,11 +1,10 @@
 @layer components {
   .hourly-forecast {
-    @apply mt-11 px-[46px] grid grid-cols-3 gap-4;
+    @apply mt-11 lg:mt-0 px-[46px] lg:px-0 lg:pr-4 flex flex-wrap gap-4 justify-center lg:justify-start;
   }
 
-  /* Forecast card */
   .hourly-forecast__card {
-    @apply bg-bg-dark rounded-2xl text-center max-w-20 py-4 px-2;
+    @apply bg-bg-dark rounded-2xl text-center w-20 py-4 px-2;
   }
 
   .hourly-forecast__time {

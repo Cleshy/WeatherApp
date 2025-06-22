@@ -1,14 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 
 const SearchBar = () => {
+  const [userInput, setUserInput] = useState("");
   const { setUserInputCity } = useContext(WeatherContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const city = formData.get("city");
-    setUserInputCity(city);
+    setUserInputCity(userInput);
+    setUserInput("");
   };
 
   return (
@@ -21,6 +21,8 @@ const SearchBar = () => {
             name="city"
             type="text"
             placeholder="Search city...."
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
           />
         </form>
       </div>

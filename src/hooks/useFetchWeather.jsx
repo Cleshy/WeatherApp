@@ -35,13 +35,17 @@ function useFetchWeather() {
     const fetchData = async () => {
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
-      const weatherURL = userLocation
-        ? `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
-        : `https://api.openweathermap.org/data/2.5/weather?q=${
-            userInputCity || FALLBACK_CITY
-          }&units=${unit}&appid=${apiKey}`;
+      const isUserTyped = Boolean(userInputCity?.trim());
 
-      const forecastURL = userLocation
+      const weatherURL = isUserTyped
+        ? `https://api.openweathermap.org/data/2.5/weather?q=${userInputCity}&units=${unit}&appid=${apiKey}`
+        : userLocation
+        ? `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
+        : `https://api.openweathermap.org/data/2.5/weather?q=${FALLBACK_CITY}&units=${unit}&appid=${apiKey}`;
+
+      const forecastURL = isUserTyped
+        ? `https://api.openweathermap.org/data/2.5/forecast?q=${userInputCity}&units=${unit}&appid=${apiKey}`
+        : userLocation
         ? `https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
         : `https://api.openweathermap.org/data/2.5/forecast?q=${
             userInputCity || FALLBACK_CITY

@@ -6,14 +6,17 @@ function DayForecastCard({ item, index }) {
   const dayLabel = getDayName(item.date, index);
   const icon = item.data.weather[0].icon;
   const iconUrl = `/icons/${icon}.png`;
-  const minTemp = item?.data?.main?.temp_min;
-  const maxTemp = item?.data?.main?.temp_max;
+  const minTemp = Math.ceil(item?.data?.main?.temp_min);
+  const maxTemp = Math.ceil(item?.data?.main?.temp_max);
 
   return (
     <div className="day-forecast-card">
       <p className="day-forecast__day">{dayLabel}</p>
-      <img className="day-forecast__icon" src={iconUrl} alt="" />
-      <div className="day-forecast__temp">
+      <div className="day-forecast__visuals">
+        <img className="day-forecast__icon" src={iconUrl} alt="" />
+        <p className="day-forecast__text">{item?.data?.weather[0]?.main}</p>
+      </div>
+      <div className="day-forecast__temp-condition">
         <p className="day-forecast__temp-text">{minTemp}°</p>
         <div className="day-forecast__temp-bar"></div>
         <p className="day-forecast__temp-text">{maxTemp}°</p>

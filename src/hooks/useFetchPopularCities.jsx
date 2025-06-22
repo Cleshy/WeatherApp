@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-import { getRandomCities } from "../libs/cities";
-
-const CITY_COUNTER = 3;
+import { popularCities } from "../libs/cities";
 
 function useFetchPopularCities() {
-  const [cities, setCities] = useState(() => {
-    return getRandomCities(CITY_COUNTER);
-  });
+  const [cities, setCities] = useState(popularCities);
   const [isLoading, setIsLoading] = useState(false);
   const [fetchedCities, setFetchedCities] = useState(null);
   const [unit, setUnit] = useState("metric");
@@ -47,7 +43,7 @@ function useFetchPopularCities() {
     };
 
     fetchCities();
-  }, []);
+  }, [unit]);
 
   return { fetchedCities, isLoading };
 }

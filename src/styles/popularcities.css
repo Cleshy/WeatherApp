@@ -1,6 +1,6 @@
 @layer components {
   .popular-cities {
-    @apply mt-11;
+    @apply mt-11 lg:mt-0 lg:col-start-1 lg:col-end-1 lg:row-start-2 lg:row-end-3;
   }
 
   .popular-cities__title {
