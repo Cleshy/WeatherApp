@@ -22,13 +22,6 @@ const popularCities = [
 ];
 
 export const getRandomCities = (count) => {
-  const randomCities = [];
-
-  for (let i = 0; i < count; i++) {
-    const rnd = Math.floor(Math.random() * popularCities.length) + 1;
-
-    randomCities.push(popularCities[rnd]);
-  }
-
-  return randomCities;
+  const shuffled = [...popularCities].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 };

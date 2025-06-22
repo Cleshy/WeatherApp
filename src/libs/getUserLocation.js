@@ -1,16 +1,17 @@
 export const getUserLocation = () => {
-  if (navigator.geolocation) {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) {
+      reject("Geolocation not supported");
+    }
+
     navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        const userLocation = { latitude, longitude };
-        return userLocation;
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        resolve({ latitude, longitude });
       },
-      (error) => {
-        console.log("Error getting user location:", error);
+      (err) => {
+        reject(err);
       }
     );
-  } else {
-    console.log("Geolocation is not supported by this browser!");
-  }
+  });
 };

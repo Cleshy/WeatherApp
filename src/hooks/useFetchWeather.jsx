@@ -6,6 +6,7 @@ function useFetchWeather() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
+  const [userInputCity, setUserInputCity] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState("metric");
@@ -26,7 +27,9 @@ function useFetchWeather() {
     }
   };
 
-  getUserLocation();
+  useEffect(() => {
+    getUserLocation();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,11 +37,15 @@ function useFetchWeather() {
 
       const weatherURL = userLocation
         ? `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
-        : `https://api.openweathermap.org/data/2.5/weather?q=${FALLBACK_CITY}&units=${unit}&appid=${apiKey}`;
+        : `https://api.openweathermap.org/data/2.5/weather?q=${
+            userInputCity || FALLBACK_CITY
+          }&units=${unit}&appid=${apiKey}`;
 
       const forecastURL = userLocation
         ? `https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
-        : `https://api.openweathermap.org/data/2.5/forecast?q=${FALLBACK_CITY}&units=${unit}&appid=${apiKey}`;
+        : `https://api.openweathermap.org/data/2.5/forecast?q=${
+            userInputCity || FALLBACK_CITY
+          }&units=${unit}&appid=${apiKey}`;
 
       try {
         const [weatherResponse, forecastResponse] = await Promise.all([
@@ -61,9 +68,18 @@ function useFetchWeather() {
     };
 
     fetchData();
-  }, [unit]);
+  }, [userInputCity, userLocation, unit]);
 
-  return { currentWeather, forecastData, unit, setUnit, isLoading, error };
+  return {
+    currentWeather,
+    forecastData,
+    unit,
+    setUnit,
+    isLoading,
+    error,
+    userInputCity,
+    setUserInputCity,
+  };
 }
 
 export default useFetchWeather;
