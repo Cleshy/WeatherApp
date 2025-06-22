@@ -1,19 +1,20 @@
-import { useContext } from "react";
-import { WeatherContext } from "../context/WeatherContext";
-
-function CityWeatherCard() {
-  const { forecastData } = useContext(WeatherContext);
-
+function CityWeatherCard({ city }) {
   return (
     <div className="city-weather-card">
       <div className="city-weather-card__main">
-        <p className="city-weather-card__country">US</p>
-        <p className="city-weather-card__city">New York</p>
-        <p className="city-weather-card__condition">Clear sky</p>
+        <p className="city-weather-card__country">{city?.sys?.country}</p>
+        <p className="city-weather-card__city">{city?.name}</p>
+        <p className="city-weather-card__condition">{city?.weather[0]?.main}</p>
       </div>
       <div className="city-weather-card__meta">
-        <img className="city-weather-card__icon" src="" alt="" />
-        <p className="city-weather-card__temp">14°</p>
+        <img
+          className="city-weather-card__icon"
+          src={`/icons/${city?.weather[0]?.icon}.png`}
+          alt=""
+        />
+        <p className="city-weather-card__temp">
+          {Math.ceil(city?.main?.temp)}°
+        </p>
       </div>
     </div>
   );

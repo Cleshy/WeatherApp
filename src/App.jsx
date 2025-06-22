@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation";
 import Dashboard from "./components/Dashboard";
 import WeatherProvider from "./context/WeatherContext";
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <WeatherProvider>
         <Navigation />
         <Dashboard />
+        <Modal />
       </WeatherProvider>
     </div>
   );
