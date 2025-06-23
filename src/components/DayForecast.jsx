@@ -31,12 +31,23 @@ function DayForecast() {
     forecastData?.city?.timezone
   );
 
+  const globalMin = Math.min(...forecastDays.map((d) => d.data.main.temp_min));
+  const globalMax = Math.max(...forecastDays.map((d) => d.data.main.temp_max));
+
   return (
     <section className="day-forecast">
       <h2 className="day-forecast__title">5-day forecast</h2>
       <div className="day-forecast-card-container">
         {forecastDays.map((item, index) => {
-          return <DayForecastCard key={index} item={item} index={index} />;
+          return (
+            <DayForecastCard
+              key={index}
+              item={item}
+              index={index}
+              globalMin={globalMin}
+              globalMax={globalMax}
+            />
+          );
         })}
       </div>
     </section>

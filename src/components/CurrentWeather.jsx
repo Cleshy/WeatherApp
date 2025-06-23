@@ -1,36 +1,31 @@
 import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
+import { getCurrentTime } from "../libs/getCurrentTime";
+import { formatWeatherData } from "../libs/formatWeatherData";
 
 function CurrentWeather() {
   const { currentWeather, unit } = useContext(WeatherContext);
 
-  const now = new Date();
-  const time = now.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  });
+  const weatherData = formatWeatherData(currentWeather, unit);
 
   return (
     <div className="current-weather">
       <div className="current-weather__main">
-        <h2 className="current-weather__temp">
-          {Math.ceil(currentWeather?.main?.temp)}°
-        </h2>
+        <h2 className="current-weather__temp">{weatherData.temp}°</h2>
         <div className="current-weather__status">
           <img
             className="current-weather__icon"
-            src={`/icons/${currentWeather?.weather[0]?.icon}.png`}
+            src={`/icons/${weatherData.statusIcon}.png`}
             alt=""
           />
-          <p>{currentWeather?.weather[0]?.main}</p>
+          <p>{weatherData.statusInfo}</p>
         </div>
-        <p>Feels like: {Math.ceil(currentWeather?.main?.feels_like)}°</p>
+        <p>Feels like: {weatherData.tempFeelsLike}°</p>
       </div>
       <div className="current-weather__meta">
         <div>
-          <h2 className="current-weather__location">{currentWeather?.name}</h2>
-          <p>{time}</p>
+          <h2 className="current-weather__location">{weatherData.location}</h2>
+          <p>{getCurrentTime()}</p>
         </div>
         <div className="current-weather__wind">
           <img
@@ -38,13 +33,10 @@ function CurrentWeather() {
             src="/icons/wind.png"
             alt=""
           />
-          <p className="current-weather__wind-speed">
-            {currentWeather?.wind?.speed} {unit === "metric" ? "m/s" : "m/h"}
-          </p>
+          <p className="current-weather__wind-speed">{weatherData.windSpeed}</p>
         </div>
         <p className="current-weather__range">
-          {Math.ceil(currentWeather?.main?.temp_min)}° to{" "}
-          {Math.ceil(currentWeather?.main?.temp_max)}°
+          {weatherData.minTemp}° to {weatherData.maxTemp}°
         </p>
       </div>
     </div>

@@ -6,6 +6,7 @@
   --color-text-light: #030616;
   --color-text-dark: #f2f5f9;
   --color-divider: #030616;
+  --color-divider-inner: #4e80ee;
 }
 
 :root {
@@ -14,6 +15,7 @@
   --text-light: var(--color-text-light);
   --text-dark: var(--color-text-dark);
   --divider: var(--color-divider);
+  --divider-inner: var(--color-divider-inner);
 }
 
 @layer base {
