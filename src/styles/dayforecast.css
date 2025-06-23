@@ -42,6 +42,10 @@
     @apply text-base;
   }
   .day-forecast__temp-bar {
-    @apply h-[6px] bg-divider w-[70px] lg:w-[215px] xl:w-[540px] rounded-full;
+    @apply relative h-[6px] bg-divider w-[70px] lg:w-[215px] xl:w-[540px] rounded-full;
+  }
+
+  .day-forecast__temp-bar-inner {
+    @apply absolute h-full bg-divider-inner rounded-full transition-all duration-300;
   }
 }
