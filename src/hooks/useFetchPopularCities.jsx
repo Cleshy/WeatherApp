@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import useFetchWeather from "./useFetchWeather";
 
 const popularCities = ["New York", "Copenhagen", "Ho Chi Minh City"];
 
 function useFetchPopularCities() {
+  const { setError } = useFetchWeather();
   const [isLoading, setIsLoading] = useState(false);
   const [fetchedCities, setFetchedCities] = useState(null);
 
@@ -22,7 +24,12 @@ function useFetchPopularCities() {
 
         const data = await Promise.all(
           responses.map((res) => {
-            if (!res.ok) throw new Error("API error");
+            if (res.status === 429) {
+              throw new Error("Too many request! Please try again later!");
+            } else if (res.status === 404) {
+              throw new Error("City not found!");
+            }
+
             return res.json();
           })
         );
@@ -30,7 +37,7 @@ function useFetchPopularCities() {
         setFetchedCities(data);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setIsLoading(false);
       }

@@ -5,7 +5,7 @@ import { WeatherContext } from "../context/WeatherContext";
 function DayForecast() {
   const { forecastData } = useContext(WeatherContext);
 
-  if (!forecastData) return null;
+  if (!forecastData) return;
 
   function extractDailyForecast(forecastList, timezoneOffSet) {
     const dailyMap = new Map();

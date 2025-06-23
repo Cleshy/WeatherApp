@@ -1,6 +1,6 @@
 @layer components {
   .current-weather {
-    @apply bg-bg-dark rounded-3xl lg:rounded-2xl px-5 py-6 flex justify-between text-[12px] max-h-[187px] my-auto;
+    @apply bg-bg-dark rounded-3xl lg:rounded-2xl px-5 py-6 flex justify-between text-[12px] max-h-[187px] lg:w-[340px] my-auto;
   }
 
   .current-weather__main,

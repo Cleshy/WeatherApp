@@ -12,7 +12,7 @@ function PopularCities() {
           <p>Loading...</p>
         ) : (
           fetchedCities?.map((city, index) => {
-            return <CityWeatherCard key={index} cityData={city} />;
+            return <CityWeatherCard key={city.id} cityData={city} />;
           })
         )}
       </div>

@@ -5,10 +5,10 @@ import { WeatherContext } from "../context/WeatherContext";
 function HourlyForecast() {
   const { forecastData, unit } = useContext(WeatherContext);
 
-  const hourlyForeCasts = forecastData?.list?.slice(0, 8).map((data, index) => {
+  const hourlyForeCasts = forecastData?.list?.slice(0, 8).map((data) => {
     return (
       <HourlyForecastCard
-        key={index}
+        key={data.dt}
         data={data}
         city={forecastData.city}
         unit={unit}

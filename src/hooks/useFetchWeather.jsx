@@ -6,7 +6,7 @@ function useFetchWeather() {
   const [currentWeather, setCurrentWeather] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
-  const [userInputCity, setUserInputCity] = useState(null);
+  const [userInputCity, setUserInputCity] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState("metric");
@@ -34,6 +34,8 @@ function useFetchWeather() {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+      setError(null);
+
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
       const isUserTyped = Boolean(userInputCity?.trim());
@@ -53,23 +55,28 @@ function useFetchWeather() {
           }&units=${unit}&appid=${apiKey}`;
 
       try {
-        const [weatherResponse, forecastResponse] = await Promise.all([
+        const [weatherRes, forecastRes] = await Promise.all([
           fetch(weatherURL),
           fetch(forecastURL),
         ]);
 
-        if (!weatherResponse.ok || !forecastResponse.ok) {
-          throw new Error("API request failed");
+        if (weatherRes.status === 429 || forecastRes.status === 429) {
+          throw new Error("Too many request");
         }
 
-        const weather = await weatherResponse.json();
-        const forecast = await forecastResponse.json();
+        if (weatherRes.status === 404 || forecastRes.status === 404) {
+          throw new Error("City not found! Please try again!");
+        }
+
+        const weather = await weatherRes.json();
+        const forecast = await forecastRes.json();
 
         setCurrentWeather(weather);
         setForecastData(forecast);
-        setIsLoading(false);
       } catch (error) {
-        console.error("Weather fetch error:", error);
+        setError(error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -80,9 +87,10 @@ function useFetchWeather() {
     currentWeather,
     forecastData,
     isLoading,
-    error,
     unit,
     setUnit,
+    error,
+    setError,
     userInputCity,
     setUserInputCity,
   };

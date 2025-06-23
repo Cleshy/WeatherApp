@@ -9,6 +9,8 @@ function WeatherProvider({ children }) {
     forecastData,
     unit,
     setUnit,
+    error,
+    setError,
     userInputCity,
     setUserInputCity,
   } = useFetchWeather();
@@ -20,6 +22,8 @@ function WeatherProvider({ children }) {
         forecastData,
         unit,
         setUnit,
+        error,
+        setError,
         userInputCity,
         setUserInputCity,
       }}

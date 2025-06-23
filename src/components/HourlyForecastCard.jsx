@@ -31,7 +31,7 @@ function HourlyForecastCard({ data, city, unit }) {
         <img
           className="hourly-forecast__icon"
           src={`/icons/${forecastData.icon}.png`}
-          alt=""
+          alt={`Weather icon for ${forecastData.condition}`}
         />
         <p className="hourly-forecast__condition">{forecastData.condition}</p>
       </div>

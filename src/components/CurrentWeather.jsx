@@ -31,7 +31,7 @@ function CurrentWeather() {
           <img
             className="current-weather__wind-icon"
             src="/icons/wind.png"
-            alt=""
+            alt={`Weather icon for ${weatherData.statusInfo}`}
           />
           <p className="current-weather__wind-speed">{weatherData.windSpeed}</p>
         </div>

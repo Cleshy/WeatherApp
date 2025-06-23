@@ -30,9 +30,12 @@
   body {
     background: url("/bg.png");
     background-color: #030616;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     color: #f2f5f9;
     font-family: "Outfit", sans-serif;
+    position: relative;
   }
 }
 
@@ -46,3 +49,4 @@
 @import "./styles/hourlyforecast.css";
 @import "./styles/dayforecast.css";
 @import "./styles/popularcities.css";
+@import "./styles/modal.css";
