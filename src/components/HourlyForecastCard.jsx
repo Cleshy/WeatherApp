@@ -7,7 +7,7 @@ function HourlyForecastCard({ data, city }) {
     const localDate = new Date(localMs);
 
     return localDate.toLocaleTimeString("en-US", {
-      hour: "2-digit",
+      hour: "numeric",
       minute: "2-digit",
       hour12: true,
     });

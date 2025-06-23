@@ -1,6 +1,6 @@
 @layer components {
   .search-container {
-    @apply flex items-center gap-3 bg-bg-dark p-2 rounded-full h-11;
+    @apply flex items-center gap-3 bg-bg-dark p-2 rounded-full h-11 w-60;
   }
 
   .search-icon {
@@ -8,7 +8,11 @@
   }
 
   .search {
-    @apply rounded-full text-sm leading-11;
+    @apply rounded-full text-sm leading-11 text-text-dark;
+  }
+
+  .search::placeholder {
+    @apply text-text-dark;
   }
 
   .search:focus {

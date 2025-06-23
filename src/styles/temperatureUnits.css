@@ -1,6 +1,6 @@
 @layer components {
   .temp-container {
-    @apply flex items-center bg-bg-dark rounded-full p-1;
+    @apply flex items-center bg-bg-dark rounded-full p-1 w-[76px];
   }
 
   .temp {
