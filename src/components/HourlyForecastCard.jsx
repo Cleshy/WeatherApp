@@ -1,4 +1,12 @@
-function HourlyForecastCard({ data, city }) {
+import { convertTemp } from "../libs/convertTemp";
+
+function HourlyForecastCard({ data, city, unit }) {
+  const forecastData = {
+    icon: data?.weather[0]?.icon,
+    condition: data?.weather[0]?.main,
+    temp: convertTemp(Math.ceil(data?.main?.temp), unit),
+  };
+
   const dt = data.dt;
   const timezoneOffset = city.timezone;
 
@@ -22,12 +30,12 @@ function HourlyForecastCard({ data, city }) {
       <div className="hourly-forecast__status">
         <img
           className="hourly-forecast__icon"
-          src={`/icons/${data?.weather[0]?.icon}.png`}
+          src={`/icons/${forecastData.icon}.png`}
           alt=""
         />
-        <p className="hourly-forecast__condition">{data?.weather[0]?.main}</p>
+        <p className="hourly-forecast__condition">{forecastData.condition}</p>
       </div>
-      <p className="hourly-forecast__temp">{Math.ceil(data?.main?.temp)}°</p>
+      <p className="hourly-forecast__temp">{forecastData.temp}°</p>
     </div>
   );
 }

@@ -7,7 +7,7 @@ function useFetchWeather() {
   const [forecastData, setForecastData] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [userInputCity, setUserInputCity] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [unit, setUnit] = useState("metric");
 
@@ -33,20 +33,21 @@ function useFetchWeather() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
       const isUserTyped = Boolean(userInputCity?.trim());
 
       const weatherURL = isUserTyped
-        ? `https://api.openweathermap.org/data/2.5/weather?q=${userInputCity}&units=${unit}&appid=${apiKey}`
+        ? `https://api.openweathermap.org/data/2.5/weather?q=${userInputCity}&units=metric&appid=${apiKey}`
         : userLocation
-        ? `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
-        : `https://api.openweathermap.org/data/2.5/weather?q=${FALLBACK_CITY}&units=${unit}&appid=${apiKey}`;
+        ? `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=metric&appid=${apiKey}`
+        : `https://api.openweathermap.org/data/2.5/weather?q=${FALLBACK_CITY}&units=metric&appid=${apiKey}`;
 
       const forecastURL = isUserTyped
-        ? `https://api.openweathermap.org/data/2.5/forecast?q=${userInputCity}&units=${unit}&appid=${apiKey}`
+        ? `https://api.openweathermap.org/data/2.5/forecast?q=${userInputCity}&units=metric&appid=${apiKey}`
         : userLocation
-        ? `https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=${unit}&appid=${apiKey}`
+        ? `https://api.openweathermap.org/data/2.5/forecast?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=metric&appid=${apiKey}`
         : `https://api.openweathermap.org/data/2.5/forecast?q=${
             userInputCity || FALLBACK_CITY
           }&units=${unit}&appid=${apiKey}`;
@@ -66,21 +67,22 @@ function useFetchWeather() {
 
         setCurrentWeather(weather);
         setForecastData(forecast);
+        setIsLoading(false);
       } catch (error) {
         console.error("Weather fetch error:", error);
       }
     };
 
     fetchData();
-  }, [userInputCity, userLocation, unit]);
+  }, [userInputCity, userLocation]);
 
   return {
     currentWeather,
     forecastData,
-    unit,
-    setUnit,
     isLoading,
     error,
+    unit,
+    setUnit,
     userInputCity,
     setUserInputCity,
   };

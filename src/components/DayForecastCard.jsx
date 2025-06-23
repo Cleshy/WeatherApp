@@ -1,25 +1,38 @@
+import { useContext } from "react";
+import { convertTemp } from "../libs/convertTemp";
+import { WeatherContext } from "../context/WeatherContext";
+
 function DayForecastCard({ item, index }) {
+  const { unit } = useContext(WeatherContext);
+
   function getDayName(date, index) {
     if (index === 0) return "Today";
     return date.toLocaleDateString("en-US", { weekday: "short" });
   }
-  const dayLabel = getDayName(item.date, index);
-  const icon = item.data.weather[0].icon;
-  const iconUrl = `/icons/${icon}.png`;
-  const minTemp = Math.ceil(item?.data?.main?.temp_min);
-  const maxTemp = Math.ceil(item?.data?.main?.temp_max);
+
+  const dailyData = {
+    label: getDayName(item.date, index),
+    iconURL: `/icons/${item?.data?.weather[0].icon}.png`,
+    condition: item?.data?.weather[0]?.main,
+    minTemp: convertTemp(item?.data?.main?.temp_min, unit),
+    maxTemp: convertTemp(item?.data?.main?.temp_max, unit),
+  };
 
   return (
     <div className="day-forecast-card">
-      <p className="day-forecast__day">{dayLabel}</p>
+      <p className="day-forecast__day">{dailyData.label}</p>
       <div className="day-forecast__visuals">
-        <img className="day-forecast__icon" src={iconUrl} alt="" />
-        <p className="day-forecast__text">{item?.data?.weather[0]?.main}</p>
+        <img
+          className="day-forecast__icon"
+          src={dailyData.iconURL}
+          alt={`${dailyData.condition} Icon`}
+        />
+        <p className="day-forecast__text">{dailyData.condition}</p>
       </div>
       <div className="day-forecast__temp-condition">
-        <p className="day-forecast__temp-text">{minTemp}°</p>
+        <p className="day-forecast__temp-text">{dailyData.minTemp}°</p>
         <div className="day-forecast__temp-bar"></div>
-        <p className="day-forecast__temp-text">{maxTemp}°</p>
+        <p className="day-forecast__temp-text">{dailyData.maxTemp}°</p>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@
   }
 
   .current-weather__meta {
-    @apply justify-between text-right font-medium;
+    @apply justify-between items-end text-right font-medium;
   }
 
   .current-weather__temp {
