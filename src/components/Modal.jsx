@@ -1,8 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { WeatherContext } from "../context/WeatherContext";
 
 function Modal() {
-  const { error } = useContext(WeatherContext);
+  const { error, setError } = useContext(WeatherContext);
+
+  useEffect(() => {
+    if (!error) return;
+
+    const errorTimeOut = setTimeout(() => {
+      setError(null);
+    }, 3000);
+
+    return () => {
+      clearTimeout(errorTimeOut);
+    };
+  }, [error]);
 
   if (!error) return null;
 
